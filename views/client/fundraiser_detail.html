@@ -70,7 +70,7 @@
           </p>
           <p><strong>City:</strong> <span id="city"></span></p>
           <p><strong>Category:</strong> <span id="category-name"></span></p>
-          <p><strong>Content:</strong> <span id="Content"></span></p>
+          <!-- <p><strong>Content:</strong> <span id="Content"></span></p> -->
 
           <button class="donate-button" onclick="showDonationMessage()">
             Donate
@@ -112,7 +112,7 @@
           document.getElementById("city").innerText = data.CITY;
           document.getElementById("category-name").innerText =
             data.category_name;
-          document.getElementById("Content").innerText = data.CONTENT;
+          // document.getElementById("Content").innerText = data.CONTENT;
         })
         .catch((error) => {
           console.error("error:", error);
