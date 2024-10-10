@@ -96,9 +96,10 @@
 
         // 验证输入
         if (!organizer && !city && !category) {
-          document.getElementById("errorMessage").innerText =
-            "Please fill in at least one search criteria。";
-          document.getElementById("errorMessage").style.display = "block";
+          // document.getElementById("errorMessage").innerText =
+          //   "Please fill in at least one search criteria。";
+          // document.getElementById("errorMessage").style.display = "block";
+          alert("You must select at least one search criteria")
           return;
         } else {
           document.getElementById("errorMessage").style.display = "none";
