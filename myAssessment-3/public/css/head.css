@@ -1,0 +1,20 @@
+
+.head{height:100%;background-color:#fff;margin:0 auto;position:relative;}
+.head{height:58px;line-height:58px;border-bottom: 1px solid #aaa;}
+.head a{color: #333;font-weight: 550}
+.head .head_left{color:#4f5151;font-size:25px;position:absolute;left:180px;top:0;font-weight: bold;}
+.head .head_central{width:500px;position:absolute;top:0;left:340px;}
+.head .head_central a{font-size:14px;}
+.head .head_central li{float:left;margin-right:20px;width:60px;height:58px;text-align: center;box-sizing: border-box;}
+.tiaozhuan1{background-color:#ff9d00;}
+.head .head_central li:last-child{margin: 0;}
+.head .head_central li:hover{border-bottom: 4px solid #ff9d00;cursor: pointer;}
+.head .head_central li:first-child:hover{border-bottom: 0;}
+.head .head_central:after{ display:block;content:" ";clear: both;}
+.head .head_right{position:absolute;top:0;left: 840px;}
+.head .head_right .float{display: block;height:58px;float:left;margin-right:10px;}
+.head .head_right .text{padding: 10px;color:#ff9e00;}
+.head .head_right .user{float:left}
+.head .head_right i{display: inline-block;width:35px;height:35px;line-height: 58px; vertical-align: middle;}
+
+

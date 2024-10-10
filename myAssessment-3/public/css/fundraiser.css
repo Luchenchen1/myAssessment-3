@@ -1,0 +1,101 @@
+body{min-width: 1200px;}
+
+.head{background-color: #fff;border-bottom: 1px solid #eee;box-shadow: 1px 1px 0 #ccc;}
+.head .head_central .tiaozhuan1{!important;background-color: #fff;}
+
+.head .head_central .tiaozhuan4{background-color: #ff9d00;}
+
+
+.bg{width: 1000px;margin: 0 auto}
+
+.title_box{height: 40px;margin: 20px auto;line-height:40px;width: 1000px;padding-left: 20px;overflow: visible;}
+.title{color: red;font-weight:bold;cursor: pointer;}
+.title:hover{text-decoration: underline;}
+
+
+
+.active{background-color: #f90;}
+
+
+.content {
+    width: 100%; 
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  div {
+    margin-bottom: 15px;
+  }
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+  }
+  .input-container {
+    display: flex;
+    margin-left: 34%;
+  }
+  input[type="text"] {
+    flex: 1; 
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-right: 10px; 
+    transition: border-color 0.3s;
+  }
+  input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  .button-container {
+    margin-left: 48%;
+    margin-top: 20px; /* 上边距 */
+  }
+  button {
+    padding: 10px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    font-size: 23px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 5px; 
+  button:hover {
+    background-color: #0056b3;
+  }
+  .error {
+    color: red;
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  .result-item {
+        display: flex;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+    .result-item img {
+        width: 150px; 
+        height: auto; 
+    }
+    .result-content {
+        padding: 15px;
+        flex-grow: 1;
+    }
