@@ -8,4 +8,5 @@ module.exports = {
 	port:'3306',
 	connectionLimit : 20,
 	waitForConnections: false
+	
 }
