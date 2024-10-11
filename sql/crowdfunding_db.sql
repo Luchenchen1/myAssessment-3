@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80033
 File Encoding         : 65001
 
-Date: 2024-10-10 12:34:15
+Date: 2024-10-11 22:36:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,15 +23,48 @@ CREATE TABLE `category` (
   `CATEGORY_ID` int NOT NULL AUTO_INCREMENT,
   `NAME` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`CATEGORY_ID`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of category
 -- ----------------------------
-INSERT INTO `category` VALUES ('7', 'Social Impact');
-INSERT INTO `category` VALUES ('8', 'Medical Treatment');
-INSERT INTO `category` VALUES ('9', 'Community Development');
-INSERT INTO `category` VALUES ('10', 'Crisis Relief');
+INSERT INTO `category` VALUES ('1', 'medical');
+INSERT INTO `category` VALUES ('2', 'education');
+INSERT INTO `category` VALUES ('7', 'crisis relief');
+INSERT INTO `category` VALUES ('8', 'Animal');
+INSERT INTO `category` VALUES ('9', 'social impact');
+
+-- ----------------------------
+-- Table structure for donation
+-- ----------------------------
+DROP TABLE IF EXISTS `donation`;
+CREATE TABLE `donation` (
+  `DONATION_ID` int NOT NULL AUTO_INCREMENT,
+  `DATE` datetime DEFAULT NULL,
+  `AMOUNT` decimal(10,2) DEFAULT NULL,
+  `GIVER` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `FUNDRAISER_ID` int NOT NULL,
+  PRIMARY KEY (`DONATION_ID`) USING BTREE,
+  KEY `FUNDRAISER_ID` (`FUNDRAISER_ID`) USING BTREE,
+  CONSTRAINT `donation_ibfk_1` FOREIGN KEY (`FUNDRAISER_ID`) REFERENCES `fundraiser` (`FUNDRAISER_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3 ROW_FORMAT=DYNAMIC;
+
+-- ----------------------------
+-- Records of donation
+-- ----------------------------
+INSERT INTO `donation` VALUES ('1', '2024-10-08 15:16:14', '2000.00', 'AA', '1');
+INSERT INTO `donation` VALUES ('2', '2024-10-08 15:20:42', '1000.00', 'BB', '2');
+INSERT INTO `donation` VALUES ('3', '2024-10-08 15:21:34', '1000.00', 'BB', '2');
+INSERT INTO `donation` VALUES ('4', '2024-10-08 15:21:34', '1000.00', 'cc', '3');
+INSERT INTO `donation` VALUES ('5', '2024-10-08 15:21:34', '1000.00', 'DD', '3');
+INSERT INTO `donation` VALUES ('6', '2024-10-08 15:21:34', '1000.00', 'EE', '4');
+INSERT INTO `donation` VALUES ('7', '2024-10-08 15:21:34', '1000.00', 'FF', '5');
+INSERT INTO `donation` VALUES ('8', '2024-10-08 15:21:34', '1000.00', 'gg', '6');
+INSERT INTO `donation` VALUES ('9', '2024-10-08 15:21:34', '1000.00', 'HH', '8');
+INSERT INTO `donation` VALUES ('10', '2024-10-08 15:21:34', '1000.00', 'II', '9');
+INSERT INTO `donation` VALUES ('11', '2024-10-08 15:21:34', '1000.00', 'jj', '10');
+INSERT INTO `donation` VALUES ('12', '2024-10-08 00:00:00', '100.00', 'test_post', '2');
+INSERT INTO `donation` VALUES ('13', '2024-10-08 00:00:00', '100.00', 'test_post', '2');
 
 -- ----------------------------
 -- Table structure for fundraiser
@@ -46,17 +79,25 @@ CREATE TABLE `fundraiser` (
   `CITY` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `ACTIVE` tinyint(1) DEFAULT '1',
   `CATEGORY_ID` int DEFAULT NULL,
-  `CONTENT` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   PRIMARY KEY (`FUNDRAISER_ID`) USING BTREE,
   KEY `CATEGORY_ID` (`CATEGORY_ID`) USING BTREE,
   CONSTRAINT `fundraiser_ibfk_1` FOREIGN KEY (`CATEGORY_ID`) REFERENCES `category` (`CATEGORY_ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of fundraiser
 -- ----------------------------
-INSERT INTO `fundraiser` VALUES ('1', 'Lily', 'To help Lily on her artistic journey', '6000.00', '3500.00', 'Brisbane', '1', '7', 'Lily is a talented young artist who wants to hold a solo art exhibition to showcase her unique artworks, including paintings, sculptures and more. These works mainly focus on the theme of environmental protection in the city, aiming to arouse people\'s attention to environmental issues through art. The rental of the exhibition space, the mounting of the works, the promotion and other financial support are required, and the total cost is estimated to be 6,000 AUD');
-INSERT INTO `fundraiser` VALUES ('2', 'Community Health Center', 'Community health center equipment renewal program', '12000.00', '8000.00', 'Gold Coast', '1', '8', 'Community health centers have been operating for many years, and some medical equipment such as electrocardiograph and blood pressure monitoring equipment are outdated and backward, which affects the accuracy and efficiency of diagnosis. The fundraising aims to update these critical medical equipment, purchase new and more advanced equipment, and provide better medical diagnostic services for the community, with an estimated need of 12,000 AUD for equipment procurement, transportation, installation and commissioning');
-INSERT INTO `fundraiser` VALUES ('3', 'Mark', 'Mark\'s educational innovation project launched', '3000.00', '2500.00', 'Canberra', '1', '9', 'Mark is an educator who plans to start an innovative educational project to introduce virtual reality (VR) technology into the teaching of science courses in local schools. He needs to purchase VR equipment, develop VR course content suitable for teaching, and conduct relevant technical training for teachers, with an estimated total cost of 8,500 AUD, hoping to improve students\' understanding and interest in scientific knowledge through this innovative teaching method');
-INSERT INTO `fundraiser` VALUES ('4', 'Post - Disaster Reconstruction Group', 'The town rebuilt itself after the disaster', '10000.00', '6000.00', 'Darwin', '1', '10', 'A small town in Darwin suffered severe flooding, with many homes damaged and infrastructure destroyed. The disaster recovery team hopes to raise 20,000 AUD to repair damaged houses, rebuild infrastructure such as roads and Bridges, and provide basic livelihood for affected residents, and has already raised 12,000 AUD');
-INSERT INTO `fundraiser` VALUES ('5', 'Luna White', 'Water Purification Project', '8000.00', '5000.00', 'Portland', '1', '9', 'Luna White is an education enthusiast who knows how important books are for children in remote areas. The fundraising project plans to build small libraries for schools in remote areas. Each library is expected to cost $20,000, including the purchase of shelves, tables and chairs, and a variety of books suitable for children of different ages. Her goal is to build libraries for 10 remote schools in two years, so the total fundraising goal is $200,000.');
+INSERT INTO `fundraiser` VALUES ('1', 'Laura Green', 'Aid for Earthquake Victims', '20000.00', '15000.00', 'San Francisco', '1', '7');
+INSERT INTO `fundraiser` VALUES ('2', 'Michael Lee', 'Animal Rescue Fund', '7000.00', '4000.00', 'Denver', '1', '8');
+INSERT INTO `fundraiser` VALUES ('3', 'Nina Patel', 'Building Community Gardens', '3000.00', '2500.00', 'Phoenix', '1', '9');
+INSERT INTO `fundraiser` VALUES ('4', 'Oscar Wilde', 'Support for Homeless Families', '10000.00', '6000.00', 'Atlanta', '1', '9');
+INSERT INTO `fundraiser` VALUES ('5', 'Penny Lane', 'Water Purification Project', '8000.00', '5000.00', 'Portland', '1', '7');
+INSERT INTO `fundraiser` VALUES ('6', 'Jackson', 'Help The Jackson\'s Rebuild After Flood', '100000.00', '7350.00', ' Byron Bay', '1', '7');
+INSERT INTO `fundraiser` VALUES ('7', 'Aya Hodroj', ' Support for Homeless Animals', '20000.00', '4657.00', 'Lebanon', '1', '8');
+INSERT INTO `fundraiser` VALUES ('8', 'Jackson', 'test the same name\'s test', '1000.00', '735.00', ' Byron Bay', '1', '8');
+INSERT INTO `fundraiser` VALUES ('9', 'Test the same city', 'Test the same city', '2222.00', '1111.00', 'Denver', '1', '8');
+INSERT INTO `fundraiser` VALUES ('10', 'test_post2', 'test_post', '11111.00', '222.00', 'test', '0', '1');
+INSERT INTO `fundraiser` VALUES ('11', 'test_post', 'test_post', null, null, 'test_post', '0', null);
+INSERT INTO `fundraiser` VALUES ('12', 'test_post1', 'test_post', null, null, 'test_post', '0', null);
+INSERT INTO `fundraiser` VALUES ('13', 'test_post1', 'test_post', null, null, 'test_post', '0', null);
+INSERT INTO `fundraiser` VALUES ('14', 'test_post1', 'test_post', '11111.00', '222.00', 'test_post', '0', null);
