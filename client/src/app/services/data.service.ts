@@ -28,7 +28,7 @@ export class DataService {
     if (criteria.organizer) params.append('organizer', criteria.organizer);
     if (criteria.city) params.append('city', criteria.city);
     console.log(criteria.selectedCategory);
-    if (criteria.selectedCategory) params.append('categories', criteria.selectedCategory); 
+    if (criteria.selectedCategory) params.append('category', criteria.selectedCategory); 
  
     return params.toString();
   }
