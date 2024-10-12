@@ -1,1 +1,31 @@
-<p>search works!</p>
+<!-- search.component.html -->
+<form (ngSubmit)="search()">
+    <label>
+      Organizer:
+      <input type="text" [(ngModel)]="criteria.organizer" name="organizer">
+    </label>
+    <br>
+    <label>
+      City:
+      <input type="text" [(ngModel)]="criteria.city" name="city">
+    </label>
+    <br>
+    <label>
+      Category:
+      <select multiple [(ngModel)]="criteria.categories" name="categories">
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </label>
+    <br>
+    <button type="submit">Search</button>
+    <button type="button" (click)="clearCheckboxes()">Clear</button>
+  </form>
+  
+  <div *ngIf="error" class="error-message">
+    <strong>No fundraisers found.</strong>
+  </div>
+  
+  <div *ngFor="let fundraiser of fundraisers">
+    <a [routerLink]="['/fundraiser', fundraiser.id]">{{ fundraiser.name }}</a>
+  </div>
+  
