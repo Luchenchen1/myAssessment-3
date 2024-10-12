@@ -11,7 +11,8 @@ export class SearchComponent {
   criteria = {
     organizer: '',
     city: '',
-    categories: []
+    categories: [],
+    selectedCategory: '' // 用于绑定选中的 category
   };
   fundraisers: any[] = [];
   error: boolean = false;
@@ -21,7 +22,7 @@ export class SearchComponent {
   constructor(private dataService: DataService) { }
 
   search() {
-    if (!this.criteria.organizer && !this.criteria.city && this.criteria.categories.length === 0) {
+    if (!this.criteria.organizer && !this.criteria.city && !this.criteria.selectedCategory ){
       alert('Please select at least one criteria.');
       return;
     }

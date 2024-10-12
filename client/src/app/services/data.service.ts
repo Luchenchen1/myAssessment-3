@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
- 
-  constructor(private http: HttpClient) {}
+
+  constructor(private http: HttpClient) { }
 
 
   getData(): Observable<any> {
@@ -27,9 +27,9 @@ export class DataService {
     const params = new URLSearchParams();
     if (criteria.organizer) params.append('organizer', criteria.organizer);
     if (criteria.city) params.append('city', criteria.city);
-    criteria.categories.forEach((category: any) => {
-      if (category.selected) params.append('categories', category.name);
-    });
+    console.log(criteria.selectedCategory);
+    if (criteria.selectedCategory) params.append('categories', criteria.selectedCategory); 
+ 
     return params.toString();
   }
 

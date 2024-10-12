@@ -1,31 +1,47 @@
 <!-- search.component.html -->
-<form (ngSubmit)="search()">
-    <label>
-      Organizer:
-      <input type="text" [(ngModel)]="criteria.organizer" name="organizer">
-    </label>
-    <br>
-    <label>
-      City:
-      <input type="text" [(ngModel)]="criteria.city" name="city">
-    </label>
-    <br>
-    <label>
-      Category:
-      <select multiple [(ngModel)]="criteria.categories" name="categories">
+<form class="search-form" (ngSubmit)="search()">
+    <div class="form-group">
+        <label>
+            Organizer:
+            <input type="text" [(ngModel)]="criteria.organizer" name="organizer">
+        </label>
+    </div>
+    <div class="form-group">
+        <label>
+            City:
+            <input type="text" [(ngModel)]="criteria.city" name="city">
+        </label>
+    </div>
+    <div class="form-group">
+        <label>
+            Category:
+            <select [(ngModel)]="criteria.selectedCategory" name="categories">
+                <option value="">Select Category</option>
+                <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+            </select>
+            <!-- <select multiple [(ngModel)]="criteria.categories" name="categories">
         <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
-      </select>
-    </label>
-    <br>
+      </select> -->
+        </label>
+    </div>
     <button type="submit">Search</button>
     <button type="button" (click)="clearCheckboxes()">Clear</button>
-  </form>
-  
-  <div *ngIf="error" class="error-message">
+</form>
+
+<div *ngIf="error" class="error-message">
     <strong>No fundraisers found.</strong>
-  </div>
-  
-  <div *ngFor="let fundraiser of fundraisers">
-    <a [routerLink]="['/fundraiser', fundraiser.id]">{{ fundraiser.name }}</a>
-  </div>
-  
+</div>
+
+<h2>Search Results</h2>
+<section class="active-fundraisers">
+    <div *ngFor="let fundraiser of fundraisers">
+        <h3>{{ fundraiser.CAPTION }}</h3>
+        <img src="assets/picture11.jpg">
+        <p>Organiser: <a [routerLink]="['/fundraiser', fundraiser.FUNDRAISER_ID]">{{ fundraiser.ORGANIZER }}</a></p>
+        <p>Target Funding: {{ fundraiser.TARGET_FUNDING |currency: 'AUD' }} </p>
+        <p>Current Funding: {{ fundraiser.CURRENT_FUNDING | currency: 'AUD' }} </p>
+        <p>City: {{ fundraiser.CITY }}</p>
+        <p>Category: {{ fundraiser.category_name }}</p>
+
+    </div>
+</section>

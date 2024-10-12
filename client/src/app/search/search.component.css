@@ -1,0 +1,101 @@
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin-bottom: 20px;
+  }
+  .form-group {
+    flex: 1;
+    min-width: 200px; /* 调整最小宽度以适应不同屏幕 */
+    margin-right: 10px; /* 添加右边距 */
+  }
+  .form-group:last-child {
+    margin-right: 0; /* 移除最后一个元素的右边距 */
+  }
+  label {
+    display: block;
+    margin-top: 10px;
+  }
+  input[type="text"],
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  button {
+    padding: 10px 20px;
+    margin-top: 20px; /* 按钮与表单元素垂直对齐 */
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #0056b3;
+  }
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  /* a {
+    display: block;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+  }
+  a:hover {
+    background-color: #f5f5f5;
+  } */
+  /* 头部样式 */
+  header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+  }
+  
+  header h1 {
+    margin: 0;
+  }
+
+    h2 {
+    text-align: center; /* 将标题居中 */
+    margin-bottom: 20px; /* 在标题下方添加一些空间 */
+    font-size: 2em; /* 根据需要调整标题大小 */
+  }
+  
+  /* 段落样式 */
+  section p {
+    line-height: 1.6;
+  }
+  
+/* 活动筹款样式 */
+.active-fundraisers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px; /* 添加一些内边距 */
+  }
+  
+  
+  .fundraiser {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 30%; /* 或者根据需要调整宽度 */
+    box-sizing: border-box; /* 确保padding不会影响宽度计算 */
+  }
+  
+  .fundraiser img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
