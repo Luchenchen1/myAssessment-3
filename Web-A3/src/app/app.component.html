@@ -1,0 +1,34 @@
+<!-- app.component.html -->
+<nav>
+  <ul>
+    <li><a routerLink="/">Home</a></li>
+    <li><a routerLink="/about">About</a></li>
+    <li><a routerLink="/contact">Contact</a></li>
+  </ul>
+</nav>
+
+<header>
+  <h1>{{ welcomeMessage }}</h1>
+  <p>{{ inspiringStories }}</p>
+</header>
+
+  <h2>Active Fundraisers</h2>
+<section class="active-fundraisers">
+  
+  <div *ngFor="let fundraiser of activeFundraisers">
+    <h3>{{ fundraiser.CAPTION }}</h3>
+    <img src="assets/picture11.jpg">
+    <p>Organiser: {{ fundraiser.ORGANIZER }}</p>
+    <p>Target Funding: {{ fundraiser.TARGET_FUNDING |currency: 'AUD' }} </p>
+    <p>Current Funding: {{ fundraiser.CURRENT_FUNDING | currency: 'AUD' }} </p>
+    <p>City: {{ fundraiser.CITY }}</p>
+    <p>Category: {{ fundraiser.category_name }}</p>
+   
+    <img *ngIf="fundraiser.imageUrl" [src]="fundraiser.imageUrl" alt="Fundraiser Image">
+  </div>
+</section>
+
+<section>
+  <h2>Contact Information</h2>
+  <p>{{ contactInfo }}</p>
+</section>
