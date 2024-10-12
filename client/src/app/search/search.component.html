@@ -1,15 +1,25 @@
 <!-- search.component.html -->
-<form class="search-form" (ngSubmit)="search()">
+<form class="search-form"  (ngSubmit)="search()">
     <div class="form-group">
         <label>
             Organizer:
-            <input type="text" [(ngModel)]="criteria.organizer" name="organizer">
+            <input type="text"  [(ngModel)]="criteria.organizer" name="organizer" >
+            <!-- #organizer="ngModel" pattern="^[^0-9]*$" maxlength="100" required> -->
+
+            <!-- <div *ngIf="organizer.invalid && (organizer.dirty || organizer.touched)" class="error-message">
+                Organizer cannot contain numbers.
+              </div> -->
         </label>
     </div>
     <div class="form-group">
         <label>
             City:
-            <input type="text" [(ngModel)]="criteria.city" name="city">
+            <input type="text"  [(ngModel)]="criteria.city" name="city" >
+            <!-- #organizer="ngModel" pattern="^[^0-9]*$" maxlength="100" required> -->
+
+            <!-- <div *ngIf="city.invalid && (city.dirty || city.touched)" class="error-message">
+                City cannot contain numbers.
+              </div> -->
         </label>
     </div>
     <div class="form-group">
@@ -19,9 +29,7 @@
                 <option value="">Select Category</option>
                 <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
             </select>
-            <!-- <select multiple [(ngModel)]="criteria.categories" name="categories">
-        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
-      </select> -->
+       
         </label>
     </div>
     <button type="submit">Search</button>
@@ -32,7 +40,10 @@
     <strong>No fundraisers found.</strong>
 </div>
 
-<h2>Search Results</h2>
+<div *ngIf="searchSuccessful">
+    <h2 >Search Results</h2>
+</div>
+
 <section class="active-fundraisers">
     <div *ngFor="let fundraiser of fundraisers">
         <h3>{{ fundraiser.CAPTION }}</h3>

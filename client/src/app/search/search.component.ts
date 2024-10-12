@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DataService } from '../services/data.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -16,7 +17,21 @@ export class SearchComponent {
   };
   fundraisers: any[] = [];
   error: boolean = false;
-  categories: string[] = ['Education', 'Health', 'Environment', 'Animal Welfare']; // 示例类别
+  categories: string[] = ['Medical', 'Education', 'Crisis Relief', 'Animal','Social Impact' ]; // 类别字典
+  searchSuccessful: boolean = false;
+  
+  //用户输入校验
+  // searchForm = new FormGroup({
+  //   organizer: new FormControl(this.criteria.organizer, [
+  //     Validators.pattern(/^[^0-9]*$/), // 禁止数字的正则表达式
+  //     Validators.maxLength(100)
+  //   ]),
+  //   city: new FormControl(this.criteria.city, [
+  //     Validators.pattern(/^[^0-9]*$/), // 禁止数字的正则表达式
+  //     Validators.maxLength(100)
+  //   ]),
+  //   selectedCategory: new FormControl(this.criteria.selectedCategory)
+  // });
 
   // 构造函数中注入DataService
   constructor(private dataService: DataService) { }
@@ -31,13 +46,16 @@ export class SearchComponent {
       next: (data) => {
         this.fundraisers = data;
         this.error = this.fundraisers.length === 0;
+        this.searchSuccessful = true;
       },
       error: (error) => {
         console.error('Error fetching fundraisers:', error);
         this.error = true;
+        this.searchSuccessful = false;
       }
     });
   }
+
 
   clearCheckboxes() {
     this.criteria.organizer = '';
