@@ -1,11 +1,4 @@
 <!-- home.component.html -->
-<nav>
-    <ul>
-      <li><a routerLink="/">Home</a></li>
-      <li><a routerLink="/about">About</a></li>
-      <li><a routerLink="/contact">Contact</a></li>
-    </ul>
-  </nav>
   
   <header>
     <h1>{{ welcomeMessage }}</h1>
@@ -15,7 +8,7 @@
     <h2>Active Fundraisers</h2>
   <section class="active-fundraisers">
     
-    <div *ngFor="let fundraiser of activeFundraisers">
+    <div *ngFor="let fundraiser of data">
       <h3>{{ fundraiser.CAPTION }}</h3>
       <img src="assets/picture11.jpg">
       <p>Organiser: {{ fundraiser.ORGANIZER }}</p>

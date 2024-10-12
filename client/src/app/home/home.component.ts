@@ -1,40 +1,35 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-interface Fundraiser {
-  CAPTION: string;
-  ORGANIZER: string;
-  TARGET_FUNDING: number;
-  CURRENT_FUNDING: number;
-  CITY: string;
-  category_name: string;
-  imageUrl?: string;
-}
-
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   welcomeMessage: string = "Welcome to Our Funny Funding!";
   inspiringStories: string = "Your support fuels our journey forward.";
   contactInfo: string = "Contact us: info@nonprofit.org";
-  activeFundraisers: Fundraiser[] = [];
+ 
+  data:any;
 
-  constructor(private http: HttpClient) {
-  }
+  // 构造函数中注入DataService
+  constructor(private dataService: DataService) {}
 
-  ngOnInit(): void {
-    // 你可以在 ngOnInit 方法或其他任何方法中使用 this.http 来发送请求
-    this.http.get<Fundraiser[]>('http://localhost:3000/fundraisers').subscribe({
-        // 处理返回的数据
-        next: (data: Fundraiser[]) => this.activeFundraisers = data,
-        error: (error) => console.error('Error fetching active fundraisers:', error)
-  }
-      
+  // ngOnInit生命周期钩子中调用DataService的方法
+  ngOnInit() {
+    this.dataService.getData().subscribe(
+      (data) => {
+        // 当数据成功返回时，将其赋值给data属性
+        this.data= data;
+      },
+      (error) => {
+        // 处理错误情况
+        console.error('Error fetching data: ', error);
+      }
     );
   }
+
+
 
 }
