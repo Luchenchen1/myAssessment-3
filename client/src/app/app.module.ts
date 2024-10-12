@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { FundraiserComponent } from './fundraiser/fundraiser.component';
+import { DonationComponent } from './donation/donation.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SearchComponent,
-    FundraiserComponent
+    FundraiserComponent,
+    DonationComponent,
+    AdminComponent
   ],
   imports: [
     CommonModule,
