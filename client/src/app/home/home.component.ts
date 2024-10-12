@@ -12,7 +12,6 @@ interface Fundraiser {
 }
 
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
