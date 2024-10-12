@@ -67,14 +67,18 @@ app.get('/search',function(req,res){
 		if (err) {
 			res.send('Connection error')
 		}
-		const { organizer, city, category } = req.query;
+		const organizer = req.query.organizer;
+		const city = req.query.city;
+		const categoryName = req.query.category
 		let query = `
 		  SELECT *,name as CATEGORY_NAME 
 		  FROM fundraiser f 
 		  LEFT JOIN category c 
 		  ON f.CATEGORY_ID = c.CATEGORY_ID
-		  WHERE 1=1
+		  WHERE 
 		`;
+
+		console.log(organizer,city,categoryName)
 		
 		let conditions = [];
 		let params = [];
@@ -84,12 +88,12 @@ app.get('/search',function(req,res){
 		  params.push(`%${organizer}%`);
 		}
 		if (city) {
-		  conditions.push('organizer LIKE ?');
+		  conditions.push('city LIKE ?');
 		  params.push(`%${city}%`);
 		}
-		if (category) {
+		if (categoryName) {
 		  conditions.push('name = ?');
-		  params.push(category);
+		  params.push(categoryName);
 		}
 	  
 		query += conditions.join(' AND ');
