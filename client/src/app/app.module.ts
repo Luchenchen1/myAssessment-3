@@ -18,6 +18,7 @@ import { MatInputModule  } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { DeleteDialogComponent } from './admin/delete-dialog/delete-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AddDialogComponent } from './admin/add-dialog/add-dialog.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     DonationComponent,
     AdminComponent,
     UpdateDialogComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    AddDialogComponent
   ],
   imports: [
     CommonModule,

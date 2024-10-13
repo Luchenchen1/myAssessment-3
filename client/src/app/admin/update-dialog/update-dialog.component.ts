@@ -9,7 +9,7 @@ import { DataService } from '../../services/data.service';
   styleUrl: './update-dialog.component.css'
 })
 export class UpdateDialogComponent implements OnInit {
-  formGroup: FormGroup = this.fb.group({});
+  fundraiserForm: FormGroup = this.fb.group({});
   // Categories dict
   categories = [
     { value: 'Medical', viewValue: 'Medical' },
@@ -32,7 +32,7 @@ export class UpdateDialogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.formGroup = this.fb.group({
+    this.fundraiserForm = this.fb.group({
       ORGANIZER: [this.fundraiser.ORGANIZER, Validators.required],
       CAPTION: [this.fundraiser.CAPTION, Validators.required],
       TARGET_FUNDING: [this.fundraiser.TARGET_FUNDING, Validators.required],
@@ -42,13 +42,13 @@ export class UpdateDialogComponent implements OnInit {
       ACTIVE: [this.fundraiser.ACTIVE, Validators.required],
       
     });
-    this.formGroup.patchValue(this.fundraiser);
+    this.fundraiserForm.patchValue(this.fundraiser);
   }
 
   updateFundraiser(): void {
-    if (this.formGroup.valid) {
+    if (this.fundraiserForm.valid) {
       // this.dialogRef.close(this.formGroup.value);
-      const updatedFundraiser = { ...this.fundraiser, ...this.formGroup.value };
+      const updatedFundraiser = { ...this.fundraiser, ...this.fundraiserForm.value };
       this.dataService.putFundraiser(updatedFundraiser).subscribe({
         next: (response) => {
           // 处理成功的响应

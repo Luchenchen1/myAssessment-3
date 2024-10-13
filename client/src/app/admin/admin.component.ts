@@ -3,6 +3,7 @@ import { DataService } from '../services/data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { AddDialogComponent } from './add-dialog/add-dialog.component';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class AdminComponent {
   ngOnInit() {
     this.dataService.getAllFundraisers().subscribe(
       (fundraisers) => {
-        // 当数据成功返回时，将其赋值给data属性
+        // 当数据成功返回时，将其赋值给fundraisers属性
         this.fundraisers=  fundraisers;
       },
       (error) => {
@@ -58,6 +59,7 @@ export class AdminComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        this.reloadData();
         // 处理更新后的数据
         console.log('Updated fundraiser:', result);
       }
@@ -65,7 +67,29 @@ export class AdminComponent {
   }
 
   openaAddDialog(){
+    const dialogRef = this.dialog.open(AddDialogComponent, {
+      width: '850px',
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // 处理更新后的数据
+        console.log('Added fundraiser:', result);
+      }
+    });
+  }
+
+  //关闭对话框后重新加载数据
+  reloadData(){
+    this.dataService.getAllFundraisers().subscribe(
+      (fundraisers) => {
+        this.fundraisers=  fundraisers;
+      },
+      (error) => {
+        // 处理错误情况
+        console.error('Error fetching data: ', error);
+      }
+    );
   }
 
 }

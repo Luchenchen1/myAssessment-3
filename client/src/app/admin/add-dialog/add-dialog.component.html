@@ -1,0 +1,52 @@
+<h1 mat-dialog-title>Create Fundraiser</h1>
+<div mat-dialog-content>
+
+    <form [formGroup]="fundraiserForm" class="dialog-form">
+        <mat-form-field appearance="fill">
+            <mat-label>Caption</mat-label>
+            <input matInput formControlName="CAPTION">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Organizer</mat-label>
+            <input matInput formControlName="ORGANIZER">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Target Funding</mat-label>
+            <input matInput formControlName="TARGET_FUNDING" type="number">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Current Funding</mat-label>
+            <input matInput formControlName="CURRENT_FUNDING" type="number">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>City</mat-label>
+            <input matInput formControlName="CITY">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="Category">
+                <mat-option *ngFor="let category of categories" [value]="category.value">
+                    {{ category.viewValue }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Active</mat-label>
+            <mat-select formControlName="ACTIVE">
+                <mat-option *ngFor="let active of actives" [value]="active.value">
+                    {{ active.viewValue }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        
+    </form>
+    <button mat-button (click)="onSubmit()"  type="submit">Create</button>
+    <button mat-button (click)="onCancel()" color="warn">Cancel</button>
+</div>
