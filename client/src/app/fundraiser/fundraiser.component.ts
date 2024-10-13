@@ -20,7 +20,7 @@ export class FundraiserComponent implements OnInit {
     CURRENT_FUNDING: 0,
     CITY: '',
     category_name: ''
-  };;
+  };
   fundraiserId: any = '';
 
   // 构造函数中注入DataService
