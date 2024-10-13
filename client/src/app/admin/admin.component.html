@@ -1,1 +1,52 @@
-<p>admin works!</p>
+<div class="container">
+    <h1>Admin Dashboard</h1>
+
+    <!-- 筹款人列表 -->
+    <div class="fundraisers-list">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Organizer</th>
+                    <th>Caption</th>
+                    <th>Target Funding</th>
+                    <th>Current Funding</th>
+                    <th>City</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fundraiser of fundraisers">
+                    <td>{{ fundraiser.ORGANIZER }}</td>
+                    <td>{{ fundraiser.CAPTION }}</td>
+                    <td>{{ fundraiser.TARGET_FUNDING | currency: 'AUD' }}</td>
+                    <td>{{ fundraiser.CURRENT_FUNDING | currency: 'AUD' }}</td>
+                    <td>{{ fundraiser.CITY }}</td>
+                    <td>{{ fundraiser.category_name }}</td>
+                    <td>
+                        <button (click)="updateFundraiser(fundraiser)">Update</button>
+                        <button (click)="deleteFundraiser(fundraiser)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 新筹款人表单 -->
+    <!-- <div class="new-fundraiser-form">
+        <h2>Create New Fundraiser</h2>
+        <form (ngSubmit)="createFundraiser(newFundraiser)">
+            <input type="text" [(ngModel)]="newFundraiser.name" name="name" required placeholder="Name">
+            <button type="submit">Save</button>
+        </form>
+    </div> -->
+
+    <!-- 更新筹款活动表单 -->
+    <!-- <div class="update-fundraiser-form">
+        <h2>Update Fundraiser</h2>
+        <form (ngSubmit)="updateFundraiser(selectedFundraiser)">
+            <input type="text" [(ngModel)]="selectedFundraiser.name" name="name" required placeholder="Name">
+            <button type="submit">Save</button>
+        </form>
+    </div> -->
+</div>
