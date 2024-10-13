@@ -1,1 +1,23 @@
-<p>fundraiser works!</p>
+<div class="fundraiser-detail">
+    <h2>Fundraising Details</h2>
+    <div class="flex-container">
+        <img src="assets/picture12.jpg" alt="Detail Image" class="detail-img" />
+        <!-- style="margin-left: 44%; width: 266px; height: auto" -->
+        <div class="text-content">
+                <p><strong>Organizer:</strong> {{ fundraiser.ORGANIZER }}</p>
+                <p><strong>Caption:</strong> {{ fundraiser.CAPTION }}</p>
+            <p>
+                <strong>Target Funding:</strong>{{ fundraiser.TARGET_FUNDING |currency: 'AUD' }}
+            </p>
+            <p>
+                <strong>Current Funding:</strong> {{ fundraiser.CURRENT_FUNDING | currency: 'AUD' }} 
+            </p>
+            <p><strong>City:</strong>{{ fundraiser.CITY }}
+            <p><strong>Category:</strong>  {{ fundraiser.category_name }}
+
+            <button class="donate-button" (click)="onDonate()">
+                Donate
+            </button>
+        </div>
+    </div>
+</div>
