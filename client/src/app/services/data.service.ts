@@ -33,4 +33,10 @@ export class DataService {
     return params.toString();
   }
 
+  getFundraiser(fundraiserId: string): Observable<any> {
+    console.log("data service fid:",fundraiserId);
+    // 替换为实际的API端点
+    return this.http.get(`http://localhost:3000/fundraiser/${fundraiserId}`);
+  }
+
 }

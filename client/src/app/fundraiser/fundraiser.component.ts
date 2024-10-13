@@ -36,9 +36,9 @@ export class FundraiserComponent implements OnInit{
     console.log("fundraiser ts fid:", this.fundraiserId);
     // 获取筹款活动详情
     this.dataService.getFundraiser(this.fundraiserId).subscribe(
-      (fundraiser) => {
+      (res) => {
         // 当数据成功返回时，将其赋值给data属性
-        this.fundraiser= fundraiser;
+        this.fundraiser= res;
         // console.log(this.fundraiser)
       },
       (error) => {
