@@ -74,6 +74,7 @@ app.get('/all_fundraisers',function(req,res){
 		SELECT f.*, c.NAME AS category_name
 	   FROM fundraiser f
 	   JOIN category c ON f.CATEGORY_ID = c.CATEGORY_ID
+	   ORDER BY ACTIVE DESC;
    `;
 		connection.query(query,function(err,results){
 			if (err) {
