@@ -12,6 +12,7 @@
                     <th>Current Funding</th>
                     <th>City</th>
                     <th>Category</th>
+                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -23,6 +24,8 @@
                     <td>{{ fundraiser.CURRENT_FUNDING | currency: 'AUD' }}</td>
                     <td>{{ fundraiser.CITY }}</td>
                     <td>{{ fundraiser.category_name }}</td>
+                    <td *ngIf="fundraiser.ACTIVE === 1"> Active </td>
+                    <td *ngIf="fundraiser.ACTIVE === 0" style="color:red"> Inactive </td>
                     <td>
                         <button (click)="updateFundraiser(fundraiser)">Update</button>
                         <button (click)="deleteFundraiser(fundraiser)">Delete</button>

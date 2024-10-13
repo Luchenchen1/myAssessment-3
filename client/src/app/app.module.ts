@@ -11,6 +11,8 @@ import { SearchComponent } from './search/search.component';
 import { FundraiserComponent } from './fundraiser/fundraiser.component';
 import { DonationComponent } from './donation/donation.component';
 import { AdminComponent } from './admin/admin.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { UpdateDialogComponent } from './admin/update-dialog/update-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { AdminComponent } from './admin/admin.component';
     SearchComponent,
     FundraiserComponent,
     DonationComponent,
-    AdminComponent
+    AdminComponent,
+    UpdateDialogComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +33,8 @@ import { AdminComponent } from './admin/admin.component';
     ReactiveFormsModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
