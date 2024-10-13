@@ -38,6 +38,8 @@ app.use(express.json()); // 用于解析JSON格式的请求体
 // 使用中间件解析URL编码的请求体
 app.use(express.urlencoded({ extended: true }));
 
+
+//get active_fundraisers
 app.get('/fundraisers',function(req,res){
 	pool.getConnection(function(err,connection){
 		if (err) {
@@ -61,6 +63,28 @@ app.get('/fundraisers',function(req,res){
 	})
 })
 
+//get all_fundraisers
+app.get('/all_fundraisers',function(req,res){
+	pool.getConnection(function(err,connection){
+		if (err) {
+			res.send('Connection error')
+		}
+		console.log(connection)
+		const query = `
+		SELECT f.*, c.NAME AS category_name
+	   FROM fundraiser f
+	   JOIN category c ON f.CATEGORY_ID = c.CATEGORY_ID
+   `;
+		connection.query(query,function(err,results){
+			if (err) {
+				console.log(err)
+				res.send('Query failure')
+			}
+			res.send(results)
+			connection.release();
+		})
+	})
+})
 
 app.get('/search',function(req,res){
 	pool.getConnection(function(err,connection){
@@ -291,24 +315,10 @@ app.delete('/fundraiser/:id', function (req, res) {
 		});	
 		
 	})
-})
+});
 
-;
-
-
-// Err exec
 app.use((err, req, res, next) => {
 	console.error(err.stack);
 	res.status(500).send('ERR!');
   });
   
-  // Close db
-//   process.on('SIGINT', () => {
-// 	connection.end(err => {
-// 	  if (err) console.error('Error closing the connection:', err.stack);
-// 	  console.log('Closed the database connection.');
-// 	  process.exit();
-// 	});
-//   });
-  
-// module.exports = router;
