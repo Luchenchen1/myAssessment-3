@@ -10,10 +10,16 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  //get all active fundraisers
+  //get active fundraisers
   getFundraisers(): Observable<any> {
     return this.http.get('http://localhost:3000/fundraisers');
   }
+
+  //get all fundraisers
+  getAllFundraisers(): Observable<any> {
+    return this.http.get('http://localhost:3000/fundraisers');
+  }
+
 
   //search fundraisers
   searchFundraisers(criteria: any): Observable<any[]> {
