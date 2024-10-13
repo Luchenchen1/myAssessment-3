@@ -20,18 +20,6 @@ export class SearchComponent {
   categories: string[] = ['Medical', 'Education', 'Crisis Relief', 'Animal','Social Impact' ]; // 类别字典
   searchSuccessful: boolean = false;
   
-  //用户输入校验
-  // searchForm = new FormGroup({
-  //   organizer: new FormControl(this.criteria.organizer, [
-  //     Validators.pattern(/^[^0-9]*$/), // 禁止数字的正则表达式
-  //     Validators.maxLength(100)
-  //   ]),
-  //   city: new FormControl(this.criteria.city, [
-  //     Validators.pattern(/^[^0-9]*$/), // 禁止数字的正则表达式
-  //     Validators.maxLength(100)
-  //   ]),
-  //   selectedCategory: new FormControl(this.criteria.selectedCategory)
-  // });
 
   // 构造函数中注入DataService
   constructor(private dataService: DataService) { }
