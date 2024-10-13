@@ -1,3 +1,7 @@
+/*
+ * @Descripttion: Web-A3
+ * @Author: Zhujiayao & Luchenchen
+ */
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -12,7 +16,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent }, // 定义home路由
   { path: 'search', component: SearchComponent }, // 定义search路由
   { path: 'fundraiser/:id', component: FundraiserComponent }, // 定义fundraiser路由
-  { path: 'donation', component: DonationComponent }, // 定义donation路由
+  { path: 'donation/:id', component: DonationComponent }, // 定义donation路由
   { path: 'admin', component: AdminComponent }, // 定义admin路由
 
 ];
