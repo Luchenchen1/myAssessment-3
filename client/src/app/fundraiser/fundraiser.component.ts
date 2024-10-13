@@ -3,7 +3,7 @@
  * @Author: Zhujiayao & Luchenchen
  */
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute,Router } from '@angular/router';//在路由中拿参数
+import { ActivatedRoute, Router } from '@angular/router';//在路由中拿参数
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { DataService } from '../services/data.service';
   templateUrl: './fundraiser.component.html',
   styleUrl: './fundraiser.component.css'
 })
-export class FundraiserComponent implements OnInit{
+export class FundraiserComponent implements OnInit {
 
   fundraiser = {
     CAPTION: '',
@@ -21,14 +21,14 @@ export class FundraiserComponent implements OnInit{
     CITY: '',
     category_name: ''
   };;
-  fundraiserId: any='';
-  
+  fundraiserId: any = '';
+
   // 构造函数中注入DataService
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     // 从查询参数中获取筹款活动ID
@@ -38,17 +38,18 @@ export class FundraiserComponent implements OnInit{
     this.dataService.getFundraiser(this.fundraiserId).subscribe(
       (res) => {
         // 当数据成功返回时，将其赋值给data属性
-        this.fundraiser= res;
+        this.fundraiser = res;
         // console.log(this.fundraiser)
       },
       (error) => {
         // 处理错误情况
         console.error('Error fetching data: ', error);
-    });
+      }
+    );
   }
 
-   // 捐赠按钮点击事件
-   onDonate() {
+  // 捐赠按钮点击事件
+  onDonate() {
     this.router.navigate(['/donation', this.fundraiserId]);
   }
 }
