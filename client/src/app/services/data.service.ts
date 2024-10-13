@@ -17,7 +17,7 @@ export class DataService {
 
   //get all fundraisers
   getAllFundraisers(): Observable<any> {
-    return this.http.get('http://localhost:3000/fundraisers');
+    return this.http.get('http://localhost:3000/all_fundraisers');
   }
 
 
