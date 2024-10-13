@@ -75,7 +75,7 @@ app.get('/search',function(req,res){
 		  FROM fundraiser f 
 		  LEFT JOIN category c 
 		  ON f.CATEGORY_ID = c.CATEGORY_ID
-		  WHERE 
+		  WHERE f.ACTIVE = 1 and
 		`;
 
 		console.log(organizer,city,categoryName)
@@ -127,7 +127,7 @@ app.get('/fundraiser/:id', function (req, res) {
 		connection.query(query, [fundraiserId],function(err,results){
 			if (err) {
 				console.log(err)
-				res.send('Query failure')
+				res.send({msg:'Query failure'})
 			}
 			res.send(results[0])
 			connection.release();
@@ -140,12 +140,12 @@ app.post('/donation', function (req, res) {
 		if (err) {
 			res.send('Connection error')
 		}
-		const date = req.query.date
-		const amount = req.query.amount
-		const giver = req.query.giver
-		const fundraiserId = req.query.fundraiserId
+		const date = req.body.date
+		const amount = req.body.amount
+		const giver = req.body.giver
+		const fundraiserId = req.body.fundraiserId
 
-		// console.log(date, amount, giver, fundraiserId);//测试拿到参数
+		console.log(date, amount, giver, fundraiserId);//测试拿到参数
 
 		if (!date || !amount || !giver || !fundraiserId) {
             // 如果数据不完整，返回400错误
@@ -157,9 +157,9 @@ app.post('/donation', function (req, res) {
 		connection.query(query, [date, amount, giver, fundraiserId],function(err,results){
 			if (err) {
 				console.log(err)
-				res.send('Query failure')
+				res.send(JSON.stringify({ message: 'Query failure'}))
 			}
-			res.send("donation insert success")
+			res.send(JSON.stringify({ message: 'donation insert success' }))
 			connection.release();
 		})
 	})
@@ -203,7 +203,7 @@ app.post('/add_fundraiser', function (req, res) {
 				console.log(err)
 				res.send('Query failure')
 			}
-			res.send("fundraiser insert success")
+			res.send({message:"fundraiser insert success"})
 			connection.release();
 		})
 	})

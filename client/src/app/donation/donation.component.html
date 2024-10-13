@@ -1,1 +1,49 @@
-<p>donation works!</p>
+<div *ngIf="fundraiser">
+    <h2>{{ fundraiser.CAPTION }}</h2>
+    <div class="flex-container">
+        <div class="fundraiser-detail">
+            <img src="assets/picture11.jpg" alt="Detail Image" class="detail-img" />
+            <div class="text-content">
+                <p><strong>Organizer:</strong> {{ fundraiser.ORGANIZER }}</p>
+                <p>
+                    <strong>Target Funding:</strong>{{ fundraiser.TARGET_FUNDING |currency: 'AUD' }}
+                </p>
+                <p>
+                    <strong>Current Funding:</strong> {{ fundraiser.CURRENT_FUNDING | currency: 'AUD' }}
+                </p>
+                <p><strong>City:</strong>{{ fundraiser.CITY }}</p>
+                <p><strong>Category:</strong> {{ fundraiser.category_name }}</p>
+
+            </div>
+        </div>
+
+        <div class="donation-form">
+            <h3> Input Your Donation Information</h3>
+
+            <form (ngSubmit)="submitDonation()">
+                <div class="form-group">
+                    <p>
+                        <strong>Giver Name:</strong>
+                        <input type="text" placeholder="Your name or nick name" [(ngModel)]="donation.giver"
+                        style="margin-left: 50px;"
+                            name="giver" required>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <p>
+                        <strong>Donation Amount:</strong>
+                        <input type="number" placeholder="(minimum 5 AUD)" [(ngModel)]="donation.amount" name="amount"
+                            min="5" required>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <p>
+                        <button class="donate-button" type="submit">Submit My Donation</button>
+                    </p>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>

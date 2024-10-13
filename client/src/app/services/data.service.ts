@@ -10,12 +10,12 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-
-  getData(): Observable<any> {
-    // 替换以下URL为你的API端点
+  //get all active fundraisers
+  getFundraisers(): Observable<any> {
     return this.http.get('http://localhost:3000/fundraisers');
   }
 
+  //search fundraisers
   searchFundraisers(criteria: any): Observable<any[]> {
     const params = this.serializeCriteria(criteria);
     // 反引号构建url
@@ -33,10 +33,23 @@ export class DataService {
     return params.toString();
   }
 
+  //getFundraiser by fid
   getFundraiser(fundraiserId: string): Observable<any> {
     console.log("data service fid:",fundraiserId);
     // 替换为实际的API端点
     return this.http.get(`http://localhost:3000/fundraiser/${fundraiserId}`);
   }
 
+
+  postDonation(donation: any): Observable<any>{
+    // format datetime for MySQL
+    donation.date = this.formatDateForMySQL(donation.date);
+    console.log(donation);
+    return this.http.post('http://localhost:3000/donation',donation);
+  }
+
+  //format datetime
+  private formatDateForMySQL(isoDate: string): string {
+    return new Date(isoDate).toISOString().slice(0, 19).replace('T', ' ');
+  }
 }
