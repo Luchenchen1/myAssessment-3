@@ -24,10 +24,7 @@ body {
     /* 平均分配导航项 */
     /* justify-content: space-around;  */
   }
-/*   
-  nav ul li {
-    float: left;
-  } */
+
   
   nav ul li a {
     display: block;
