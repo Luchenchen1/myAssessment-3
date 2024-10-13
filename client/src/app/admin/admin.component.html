@@ -27,7 +27,7 @@
                     <td *ngIf="fundraiser.ACTIVE === 1"> Active </td>
                     <td *ngIf="fundraiser.ACTIVE === 0" style="color:red"> Inactive </td>
                     <td>
-                        <button (click)="updateFundraiser(fundraiser)">Update</button>
+                        <button (click)="openUpdateDialog(fundraiser)">Update</button>
                         <button (click)="deleteFundraiser(fundraiser)">Delete</button>
                     </td>
                 </tr>
@@ -44,12 +44,4 @@
         </form>
     </div> -->
 
-    <!-- 更新筹款活动表单 -->
-    <!-- <div class="update-fundraiser-form">
-        <h2>Update Fundraiser</h2>
-        <form (ngSubmit)="updateFundraiser(selectedFundraiser)">
-            <input type="text" [(ngModel)]="selectedFundraiser.name" name="name" required placeholder="Name">
-            <button type="submit">Save</button>
-        </form>
-    </div> -->
 </div>

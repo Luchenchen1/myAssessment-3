@@ -13,6 +13,9 @@ import { DonationComponent } from './donation/donation.component';
 import { AdminComponent } from './admin/admin.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { UpdateDialogComponent } from './admin/update-dialog/update-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { UpdateDialogComponent } from './admin/update-dialog/update-dialog.compo
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     provideClientHydration(),
