@@ -1,9 +1,4 @@
 /* app.component.css */
-nav ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
   nav ul li {
     display: inline;
     margin-right: 10px;
@@ -25,22 +20,29 @@ body {
     padding: 0;
     overflow: hidden;
     background-color: #333;
+    display: flex; /* 使用Flexbox布局 */
+    /* 平均分配导航项 */
+    /* justify-content: space-around;  */
   }
-  
+/*   
   nav ul li {
     float: left;
-  }
+  } */
   
   nav ul li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 18px 200px;
     text-decoration: none;
+    transition: background-color 0.3s; /* 平滑过渡效果 */
+    border-radius: 5px; /* 添加圆角 */
+    /* width: 100%;  */
   }
   
   nav ul li a:hover {
     background-color: #111;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* 添加阴影效果 */
   }
   
  /* 头部样式 */
@@ -55,13 +57,3 @@ header h1 {
   margin: 0;
 }
 
-  h2 {
-  text-align: center; /* 将标题居中 */
-  margin-bottom: 20px; /* 在标题下方添加一些空间 */
-  font-size: 2em; /* 根据需要调整标题大小 */
-}
-
-/* 段落样式 */
-section p {
-  line-height: 1.6;
-}

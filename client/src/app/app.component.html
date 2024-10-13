@@ -1,9 +1,14 @@
-<!-- app.component.html -->
+<header>
+  <h1>{{ welcomeMessage }}</h1>
+  <p>{{ inspiringStories }}</p>
+</header>
 <nav>
   <ul>
     <li><a routerLink="">Home</a></li>
     <li><a routerLink="/search">Search</a></li>
+    <li><a routerLink="/admin">Admin</a></li>
   </ul>
 </nav>
+
 
 <router-outlet></router-outlet>
