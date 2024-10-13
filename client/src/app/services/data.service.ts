@@ -62,4 +62,8 @@ export class DataService {
     return this.http.put(`http://localhost:3000/fundraiser/${fundraiser.FUNDRAISER_ID}`,fundraiser);
   }
 
+  deleteFundraiser(fundraiser: any): Observable<any>{
+    return this.http.delete(`http://localhost:3000/fundraiser/${fundraiser.FUNDRAISER_ID}`);
+  }
+  
 }

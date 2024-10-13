@@ -1,7 +1,8 @@
 
 <div class="container">
 
-    <h1>Admin Dashboard</h1>
+    <h1>Admin Dashboard  <button (click)="openaAddDialog()">add fundraiser</button></h1>
+   
     <!-- 筹款人列表 -->
     <div class="fundraisers-list">
         <table class="table">
@@ -36,13 +37,6 @@
         </table>
     </div>
 
-    <!-- 新筹款人表单 -->
-    <!-- <div class="new-fundraiser-form">
-        <h2>Create New Fundraiser</h2>
-        <form (ngSubmit)="createFundraiser(newFundraiser)">
-            <input type="text" [(ngModel)]="newFundraiser.name" name="name" required placeholder="Name">
-            <button type="submit">Save</button>
-        </form>
-    </div> -->
+   
 
 </div>

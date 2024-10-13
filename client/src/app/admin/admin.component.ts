@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 
 @Component({
@@ -35,9 +36,19 @@ export class AdminComponent {
   }
 
   deleteFundraiser(fundraiser:any){
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      width: '400px',
+      data: fundraiser
+    });
 
-
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // 处理更新后的数据
+        console.log('Deleted fundraiser:', result);
+      }
+    });
   }
+
 
   openUpdateDialog(fundraiser:any) {
     const dialogRef = this.dialog.open(UpdateDialogComponent, {
@@ -51,6 +62,10 @@ export class AdminComponent {
         console.log('Updated fundraiser:', result);
       }
     });
+  }
+
+  openaAddDialog(){
+
   }
 
 }

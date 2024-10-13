@@ -17,6 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule  } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { DeleteDialogComponent } from './admin/delete-dialog/delete-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DeleteDialogComponent } from './admin/delete-dialog/delete-dialog.compo
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule 
+    MatSelectModule ,
+    MatDialogModule 
   ],
   providers: [
     provideClientHydration(),

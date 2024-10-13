@@ -277,7 +277,7 @@ app.put('/fundraiser/:id', function (req, res) {
 				console.log(err)
 				res.send('Query failure')
 			}
-			res.send("fundraiser update success")
+			res.send(JSON.stringify({ message: 'fundraiser update success' }))
 			connection.release();
 		})
 	})
@@ -309,7 +309,7 @@ app.delete('/fundraiser/:id', function (req, res) {
 					res.send('Query failure')
 				}
 				// 删除成功
-				res.send("fundraiser delete success")
+				res.send(JSON.stringify({ message: 'fundraiser delete success' }))
 				connection.release();
 			})
 
