@@ -241,14 +241,14 @@ app.put('/fundraiser/:id', function (req, res) {
 		if (err) {
 			res.send('Connection error')
 		}
-		const fundraiserId = req.params.id; // 从请求参数中获取筹款人的 ID
-		const organizer = req.query.organizer
-		const caption = req.query.caption
-		const targetFunding = req.query.target_funding
-		const currentFunding = req.query.current_funding
-		const city = req.query.city
-		const active = req.query.active
-		const categoryID = req.query.category_id
+		const fundraiserId = req.body.FUNDRAISER_ID; // 从请求参数中获取筹款人的 ID
+		const organizer = req.body.ORGANIZER
+		const caption = req.body.CAPTION
+		const targetFunding = req.body.TARGET_FUNDING
+		const currentFunding = req.body.CURRENT_FUNDING
+		const city = req.body.CITY
+		const active = req.body.ACTIVE
+		const categoryID = req.body.CATEGORY_ID
 
 		console.log(fundraiserId+"\n",req.query);//测试拿到参数
 		if (!organizer || !caption || !targetFunding || !currentFunding 

@@ -14,8 +14,9 @@ import { AdminComponent } from './admin/admin.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { UpdateDialogComponent } from './admin/update-dialog/update-dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-
+import { MatInputModule  } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { DeleteDialogComponent } from './admin/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MatInputModule } from '@angular/material/input';
     FundraiserComponent,
     DonationComponent,
     AdminComponent,
-    UpdateDialogComponent
+    UpdateDialogComponent,
+    DeleteDialogComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule 
   ],
   providers: [
     provideClientHydration(),

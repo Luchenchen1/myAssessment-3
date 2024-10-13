@@ -53,9 +53,13 @@ export class DataService {
     console.log(donation);
     return this.http.post('http://localhost:3000/donation',donation);
   }
-
   //format datetime
   private formatDateForMySQL(isoDate: string): string {
     return new Date(isoDate).toISOString().slice(0, 19).replace('T', ' ');
   }
+
+  putFundraiser(fundraiser: any): Observable<any>{
+    return this.http.put(`http://localhost:3000/fundraiser/${fundraiser.FUNDRAISER_ID}`,fundraiser);
+  }
+
 }

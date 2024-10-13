@@ -13,11 +13,11 @@ export class SearchComponent {
     organizer: '',
     city: '',
     categories: [],
-    selectedCategory: '' // 用于绑定选中的 category
+    selectedCategory: '' 
   };
   fundraisers: any[] = [];
   error: boolean = false;
-  categories: string[] = ['Medical', 'Education', 'Crisis Relief', 'Animal','Social Impact' ]; // 类别字典
+  categories: string[] = ['Medical', 'Education', 'Crisis Relief', 'Animal','Social Impact' ];// Categories dict
   searchSuccessful: boolean = false;
   
 

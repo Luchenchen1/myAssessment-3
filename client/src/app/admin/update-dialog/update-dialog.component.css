@@ -1,0 +1,9 @@
+.dialog-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* 或者您想要的具体宽度 */
+  }
+  
+  .form-group {
+    margin-bottom: 1rem; /* 在每个输入字段之间添加一些空间 */
+  }
