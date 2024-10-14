@@ -6,9 +6,9 @@ const express = require('express');
 const mysql = require('mysql');
 const port = 3000;
 const app = express();
-const cors = require('cors');//处理跨域请求
+const cors = require('cors');//Handle cross-domain requests
 
-// 允许所有跨域请求
+// All cross-domain requests are allowed
 app.use(cors());
 
 // Create a database connection pool.
@@ -34,8 +34,8 @@ app.listen(port, () => {
 });
 
 
-app.use(express.json()); // 用于解析JSON格式的请求体
-// 使用中间件解析URL编码的请求体
+app.use(express.json()); // Used to parse the request body in JSON format
+// Use middleware to parse the URL-encoded request body
 app.use(express.urlencoded({ extended: true }));
 
 
@@ -170,13 +170,13 @@ app.post('/donation', function (req, res) {
 		const giver = req.body.giver
 		const fundraiserId = req.body.fundraiserId
 
-		console.log(date, amount, giver, fundraiserId);//测试拿到参数
+		console.log(date, amount, giver, fundraiserId);//Test get parameters
 
 		if (!date || !amount || !giver || !fundraiserId) {
-            // 如果数据不完整，返回400错误
+            // If the data is incomplete, a 400 error is returned
             return res.status(400).send('missing required arguments.');
         }
-		// 准备插入数据库的SQL语句
+		// Prepare the SQL statement for inserting into the database
 		const query = 'INSERT INTO DONATION (DATE, AMOUNT, GIVER, FUNDRAISER_ID) VALUES (?, ?, ?, ?)';
 
 		connection.query(query, [date, amount, giver, fundraiserId],function(err,results){
@@ -205,14 +205,14 @@ app.post('/add_fundraiser', function (req, res) {
 		const active = req.body.ACTIVE
 		const categoryID = req.body.Category
 
-		console.log(targetFunding,currentFunding);//测试拿到参数
+		console.log(targetFunding,currentFunding);//Test get parameters
 		if (!organizer || !caption || !targetFunding || !currentFunding 
 			|| !city || !active || !categoryID
 		) {
-            // 如果数据不完整，返回400错误
+            // If the data is incomplete, a 400 error is returned
             return res.status(400).send('missing required arguments.');
         }
-		// 准备插入数据库的SQL语句
+		// Prepare the SQL statement for inserting into the database
 		const query = `
 		INSERT INTO fundraiser (
 		ORGANIZER, 
@@ -243,7 +243,7 @@ app.put('/fundraiser/:id', function (req, res) {
 		if (err) {
 			res.send('Connection error')
 		}
-		// 从请求包中获取参数
+		// Gets parameters from the request package
 		const fundraiserId = req.body.FUNDRAISER_ID; 
 		const organizer = req.body.ORGANIZER
 		const caption = req.body.CAPTION
@@ -253,17 +253,17 @@ app.put('/fundraiser/:id', function (req, res) {
 		const active = req.body.ACTIVE
 		const categoryID = req.body.CATEGORY_ID
 
-		console.log(fundraiserId+"\n",req.query);//测试拿到参数
+		console.log(fundraiserId+"\n",req.query);//Test get parameters
 		if (!organizer || !caption || !targetFunding || !currentFunding 
 			|| !city || !active || !categoryID
 		) {
-            // 如果数据不完整，返回400错误
+            // If the data is incomplete, a 400 error is returned
             return res.status(400).send(
 				organizer+'  '+caption+'  '+targetFunding+'  '+currentFunding
 				+'  '+city+'  '+active+'  '+categoryID+'  '
 				+'missing required arguments.');
         }
-		// 准备插入数据库的SQL语句
+		// If the data is incomplete, a 400 error is returned
 		const query = `
 		UPDATE fundraiser 
 		SET ORGANIZER = ?,
@@ -301,17 +301,17 @@ app.delete('/fundraiser/:id', function (req, res) {
 				res.send('Query failure')
 			}
 			if(results.donationCount>0){
-				// 如果已有捐款，返回错误信息
+				// If there is already a donation, an error message is returned
 				return res.status(400).json({ message: '不能删除已获得捐款的筹款人' });
 			}
-			// 如果没有捐款，执行删除操作
+			// If no donation is made, delete it
 			const deleteQuery = 'DELETE FROM FUNDRAISER WHERE FUNDRAISER_ID = ?';
 			connection.query(deleteQuery, [fundraiserId], function(err,results){
 				if (err) {
 					console.log(err)
 					res.send('Query failure')
 				}
-				// 删除成功
+				// Successfully deleted
 				res.send(JSON.stringify({ message: 'fundraiser delete success' }))
 				connection.release();
 			})
